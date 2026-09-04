@@ -1,28 +1,70 @@
-# zero-reach
-Stop wasting hours auditing dead code during zero-day alerts. Instantly verify if a vulnerable library is active in your local process memory or container runtime.
-# zero-reach: local dependency reachability checker
+Here is a clean, professional `README.md` template designed specifically for your `zero-reach` repository. You can copy this directly and paste it into a new `README.md` file on GitHub or in your local folder.
 
-## what this is
+---
 
-Zero-reach is a lightweight, open-source utility designed for developers and infrastructure engineers. When a new vulnerability or zero-day is announced, standard security scanners flag every instance of a library across your codebase—even if it is dead code or never loaded into memory. This tool checks your active container runtime or process maps to give you a clear binary verdict: vulnerable and active, or vulnerable but unreachable.
+```markdown
+# zero-reach 🔍
 
-## how it works
+> A lightweight dependency reachability scanner designed to distinguish between dormant vulnerable dependencies and actively exposed code paths.
 
-1. Scans local process memory or container environments for loaded library signatures.
-2. Compares active execution paths against known vulnerable package versions.
-3. Outputs a clean, actionable report directly to your terminal.
+## 🚀 Overview
 
-## quick start
+Traditional dependency checkers flag every vulnerable package listed in your manifest file (like `requirements.txt`), creating massive alert fatigue. However, having a vulnerable package installed doesn't automatically mean it is reachable or executed at runtime.
 
-Clone the repository and run the checker against your target environment:
+**zero-reach** simulates reachability analysis to help developers prioritize real threats by checking whether vulnerable packages have active runtime evidence in the target environment.
+
+---
+
+## 📊 Evaluation States
+
+The scanner outputs one of two states for any discovered vulnerability:
+
+1. **`[VULNERABLE BUT UNREACHABLE]`**
+   * *Interpretation:* The vulnerable package exists in the dependency metadata, but no runtime execution evidence was found. Risk is lower or dormant.
+2. **`[VULNERABLE & ACTIVE]`**
+   * *Interpretation:* The vulnerable package exists in the metadata **and** has corresponding runtime path evidence, indicating an active exposure risk.
+
+---
+
+## 🛠️ Usage
+
+Run the scanner against any target directory using Python:
 
 ```bash
-git clone https://github.com/OfficialZucsl/zero-reach.git
-cd zero-reach
-python3 checker.py --target /path/to/environment
+python checker.py --target .
 
 ```
 
-## join the private beta
+### Simulating Active Runtime Evidence
 
-Want automated runtime workarounds that block zero-day exploits before your developers finish patching code? [Request emergency beta access](https://www.google.com/search?q=%23) to test our shadow mitigation engine.
+To test or demonstrate active reachability states locally, you can include a `.zero-reach-runtime` file in your target directory containing the name of the package (e.g., `requests`).
+
+---
+
+## 📁 Project Structure
+
+```text
+zero-reach/
+├── checker.py         # Core reachability and scanning engine
+└── README.md          # Project documentation
+
+```
+
+---
+
+## 📄 License
+
+This project is open-source and available under the [MIT License](https://www.google.com/search?q=LICENSE).
+
+```
+
+---
+
+### How to add it via GitHub:
+1. Go to your repository page on GitHub (`[github.com/OfficialZucsl/zero-reach](https://github.com/OfficialZucsl/zero-reach)`).
+2. Click **Add file** > **Create new file**.
+3. Name the file `README.md`.
+4. Paste the text block above into the editor.
+5. Click **Commit changes**.
+
+```
